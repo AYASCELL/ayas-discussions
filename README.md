@@ -1,8 +1,8 @@
 # AYAS OS Discussions
 
-<p align="center">
+<span align="center">
   <img src="assets/logo.png" alt="AYAS OS Logo" width="250">
-</p>
+</span>
 Community space for **AYAS OS** ideas and suggestions. Propose a feature, vote on the ones you want, and help us decide what gets built next.
 
 * 👉 **Open the board:** [https://github.com/AYASCELL/ayas-discussions/discussions](https://github.com/AYASCELL/ayas-discussions/discussions)
