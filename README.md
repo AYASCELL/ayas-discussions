@@ -1,20 +1,35 @@
-# AYAS OS Community Discussions 🐧
+# AYAS OS Discussions
 
-Welcome to the official community hub for **AYAS OS**! This repository is dedicated to hosting our community forum via GitHub Discussions. 
+<p align="center">
+  <img src="ayas-os-logo.png" alt="AYAS OS Logo" width="250">
+</p>
 
-Whether you are a developer, an early adopter, or simply curious about our Debian-based operating system, this is the place to be.
+Community space for **AYAS OS** ideas and suggestions. Propose a feature, vote on the ones you want, and help us decide what gets built next.
 
-## 💬 Join the Conversation
+* 👉 **Open the board:** [https://github.com/AYASCELL/ayas-discussions/discussions](https://github.com/AYASCELL/ayas-discussions/discussions)
+* 🌐 **Our Website:** [https://ayascell.github.io](https://ayascell.github.io)
 
-We use GitHub Discussions as our primary forum for questions, ideas, and general community engagement. There is no need to open an "Issue" for general questions—just head over to our discussion board!
+> **This space is for ideas and suggestions, not bug reports.** Found a bug? Please report it in the relevant code repository.
+> And remember, every Linux distribution is a great distribution: we are here to make AYAS OS better, never to trash the systems you use.
 
-👉 **[Click here to visit the AYAS OS Forum](https://github.com/AYASCELL/ayas-discussions/discussions)**
+## How it works?
 
-Here you can:
-* **Q&A:** Ask questions about installing, configuring, or using AYAS OS.
-* **Ideas:** Propose new features, applications, or repository structures.
-* **Show and Tell:** Share your custom desktop environments, themes, and scripts.
-* **General:** Chat with other AYAS OS users and tech enthusiasts.
+1. **Share** — Drop a feature request in the **Ideas** section or cast a vote in **Polls**. A single sentence is enough.
+2. **Vote for what you want.** Votes are ranked on the board, so the most requested features naturally rise to the top.
+3. **We are building from scratch;** our roadmap is shaped by demand. As we develop our custom Debian-based system, many of its core tools and features will be born from the requests made right here.
+
+## Categories
+
+* 💡 **Ideas** — Feature requests that you can vote on.
+* 🗳️ **Polls** — We ask the community a question, and you choose the path.
+* 🙌 **Show and Tell** — Share your AYAS OS setups, desktop environments, and custom configurations.
+* 🙏 **Q&A** — Ask for help or assist others in the community.
+
+## Guidelines
+
+* Be kind and respectful to everyone and to users of other distributions.
+* Please search before posting to avoid duplicates, and simply upvote if your idea already exists.
+* Keep bug reports in their specific code repositories; here, we focus on dreaming up new features.
 
 ---
 *Built with ❤️ by the AYASCELL.*
