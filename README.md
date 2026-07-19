@@ -1,7 +1,7 @@
 # AYAS OS Discussions
 
 <p align="center">
-  <img src="ayas-os-logo.png" alt="AYAS OS Logo" width="250">
+  <img src="logo.png" alt="AYAS OS Logo" width="250">
 </p>
 
 Community space for **AYAS OS** ideas and suggestions. Propose a feature, vote on the ones you want, and help us decide what gets built next.
