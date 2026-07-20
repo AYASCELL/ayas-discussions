@@ -1,1 +1,401 @@
-AYAS OS Discussions page
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayas OS Community</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .category-card {
+            padding: 30px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .category-icon {
+            font-size: 2.5em;
+            color: var(--primary-gold);
+        }
+        .step-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .step-card {
+            padding: 40px 20px;
+            position: relative;
+        }
+        .step-number {
+            margin: 0 auto 20px auto;
+            width: 50px;
+            height: 50px;
+            background: var(--dark-bg);
+            border: 2px solid var(--primary-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary-gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+        .guidelines-list {
+            text-align: left;
+            max-width: 800px;
+            margin: 40px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .guideline-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .guideline-icon {
+            font-size: 1.8em;
+            color: var(--primary-gold);
+            margin-top: 5px;
+        }
+        .lang-btn {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-gold);
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-btn:hover {
+            background: var(--primary-gold);
+            color: var(--dark-bg);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+        
+        /* Language Toggle Classes */
+        /* Default state: English */
+        .lang-tr { display: none !important; }
+        .lang-en { display: inline !important; }
+        
+        /* When Turkish is active */
+        .show-tr .lang-tr { display: inline !important; }
+        .show-tr .lang-en { display: none !important; }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="starfield-canvas"></canvas>
+    <div class="glass-overlay"></div>
+
+    <header class="main-header glass">
+        <nav class="navbar">
+            <a href="#hero" class="logo-link">
+                <img src="assets/ayasoslogo.png" alt="Ayas OS Logo" class="header-logo-image">
+                <span class="gradient-text header-logo-text glow-text">Ayas OS</span>
+            </a>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#how-it-works"><i class="fas fa-info-circle nav-icon"></i><span class="lang-en">Development Cycle</span><span class="lang-tr">Gelişim Süreci</span></a></li>
+                <li><a href="#categories"><i class="fas fa-folder-open nav-icon"></i><span class="lang-en">Hubs</span><span class="lang-tr">Odalar</span></a></li>
+                <li><a href="#guidelines"><i class="fas fa-shield-alt nav-icon"></i><span class="lang-en">Constitution</span><span class="lang-tr">Anayasa</span></a></li>
+                <li>
+                    <button id="lang-toggle" class="lang-btn">
+                        <i class="fas fa-globe"></i> <span id="current-lang">EN</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <div class="profile-avatar avatar-glow" style="border: none; background: transparent;">
+                <img src="assets/ayasoslogo.png" alt="Ayas OS Logo" style="object-fit: contain; filter: drop-shadow(0 0 20px rgba(212,175,55,0.5));">
+            </div>
+            <h1 class="gradient-text mega-title" style="font-size: 4em;">
+                <span class="lang-en">Ayas OS Community</span>
+                <span class="lang-tr">Ayas OS Topluluğu</span>
+            </h1>
+            <h3 class="subtitle type-writer">
+                <span class="lang-en">Building Together</span>
+                <span class="lang-tr">Birlikte İnşa Ediyoruz</span>
+            </h3>
+            <p>
+                <span class="lang-en">You have the power to shape our open-source ecosystem. Propose a new idea, contribute to the code, or share your dream feature with our development team.</span>
+                <span class="lang-tr">Açık kaynaklı ekosistemimize yön vermek sizin elinizde. Yeni bir fikir öne sürün, kodlara katkıda bulunun veya hayalinizdeki özelliği ekibimizle paylaşın.</span>
+            </p>
+            <div class="hero-buttons">
+                <a href="https://github.com/AYASCELL/ayas-discussions/discussions" target="_blank" class="link-button solid gold-gradient">
+                    <span class="lang-en">Join Community <i class="fas fa-comments"></i></span>
+                    <span class="lang-tr" style="color: #05050A;">Topluluğa Katıl <i class="fas fa-comments"></i></span>
+                </a>
+                <a href="#how-it-works" class="link-button outline glow-hover">
+                    <span class="lang-en">Explore <i class="fas fa-arrow-down"></i></span>
+                    <span class="lang-tr">Keşfet <i class="fas fa-arrow-down"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works Section -->
+    <section id="how-it-works" class="content-section">
+        <div class="container">
+            <h2 class="section-title gradient-text glow-text">
+                <span class="lang-en">Development Cycle</span>
+                <span class="lang-tr">Gelişim Süreci</span>
+            </h2>
+            <p class="section-subtitle">
+                <span class="lang-en">Leave your mark on the future of Ayas OS.</span>
+                <span class="lang-tr">Ayas OS'in geleceğinde sizin de bir imzanız olsun.</span>
+            </p>
+
+            <div class="step-grid">
+                <div class="step-card glass-card premium-border hover-lift">
+                    <div class="step-number">1</div>
+                    <i class="fas fa-bolt" style="font-size: 3em; color: #D4AF37; margin: 20px 0;"></i>
+                    <h3>
+                        <span class="lang-en">Spark an Idea</span>
+                        <span class="lang-tr">Fikir Ateşle</span>
+                    </h3>
+                    <p>
+                        <span class="lang-en">Noticed something missing? Or have a brilliant concept? Share it with the community right away.</span>
+                        <span class="lang-tr">Sistemin eksiğini mi gördünüz? Veya harika bir konseptiniz mi var? Bunu hemen bizimle paylaşın.</span>
+                    </p>
+                </div>
+                <div class="step-card glass-card premium-border hover-lift">
+                    <div class="step-number">2</div>
+                    <i class="fas fa-users" style="font-size: 3em; color: #D4AF37; margin: 20px 0;"></i>
+                    <h3>
+                        <span class="lang-en">Gather Support</span>
+                        <span class="lang-tr">Destek Topla</span>
+                    </h3>
+                    <p>
+                        <span class="lang-en">Review projects from other users and upvote the innovations you like to help them stand out.</span>
+                        <span class="lang-tr">Topluluktaki diğer kullanıcıların projelerini inceleyin ve beğendiğiniz yeniliklere oy vererek öne çıkarın.</span>
+                    </p>
+                </div>
+                <div class="step-card glass-card premium-border hover-lift">
+                    <div class="step-number">3</div>
+                    <i class="fas fa-code-branch" style="font-size: 3em; color: #D4AF37; margin: 20px 0;"></i>
+                    <h3>
+                        <span class="lang-en">Bring to Life</span>
+                        <span class="lang-tr">Hayata Geçir</span>
+                    </h3>
+                    <p>
+                        <span class="lang-en">Ideas that receive enough backing are added to our development roadmap for the next official Ayas OS release.</span>
+                        <span class="lang-tr">Yeterli desteği gören fikirler, Ayas OS'in bir sonraki resmi sürümünde yer almak üzere geliştirme takvimine alınır.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="content-section showcase-section">
+        <div class="container">
+            <h2 class="section-title gradient-text glow-text">
+                <span class="lang-en">Discussion Hubs</span>
+                <span class="lang-tr">Tartışma Odaları</span>
+            </h2>
+            <p class="section-subtitle">
+                <span class="lang-en">Let's talk about the right things in the right place.</span>
+                <span class="lang-tr">Doğru konuyu doğru yerde konuşalım.</span>
+            </p>
+
+            <div class="category-grid">
+                
+                <a href="https://github.com/AYASCELL/ayas-discussions/discussions/categories/announcements" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="category-card glass-card premium-border hover-lift">
+                        <i class="fas fa-bullhorn category-icon glow-text"></i>
+                        <h3>
+                            <span class="lang-en">Announcements</span>
+                            <span class="lang-tr">Duyurular</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Official news and updates about Ayas OS.</span>
+                            <span class="lang-tr">Ayas OS hakkındaki resmi haberler ve güncellemeler.</span>
+                        </p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/AYASCELL/ayas-discussions/discussions/categories/general" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="category-card glass-card premium-border hover-lift">
+                        <i class="fas fa-comments category-icon glow-text"></i>
+                        <h3>
+                            <span class="lang-en">General</span>
+                            <span class="lang-tr">Genel Tartışma</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Everything related to the Linux universe and the open-source world.</span>
+                            <span class="lang-tr">Linux evreni ve açık kaynak dünyasına dair her şey.</span>
+                        </p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/AYASCELL/ayas-discussions/discussions/categories/ideas" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="category-card glass-card premium-border hover-lift">
+                        <i class="fas fa-lightbulb category-icon glow-text"></i>
+                        <h3>
+                            <span class="lang-en">Ideas</span>
+                            <span class="lang-tr">Fikirler</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Propose new features and discuss other members' suggestions.</span>
+                            <span class="lang-tr">Yeni özellikler önerin ve diğer üyelerin önerilerini tartışın.</span>
+                        </p>
+                    </div>
+                </a>
+                
+                <a href="https://github.com/AYASCELL/ayas-discussions/discussions/categories/polls" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="category-card glass-card premium-border hover-lift">
+                        <i class="fas fa-poll category-icon glow-text"></i>
+                        <h3>
+                            <span class="lang-en">Polls</span>
+                            <span class="lang-tr">Anketler</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Vote on community decisions and future plans.</span>
+                            <span class="lang-tr">Topluluk kararları ve gelecek planları hakkında oy verin.</span>
+                        </p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/AYASCELL/ayas-discussions/discussions/categories/q-a" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="category-card glass-card premium-border hover-lift">
+                        <i class="fas fa-question-circle category-icon glow-text"></i>
+                        <h3>
+                            <span class="lang-en">Q&A</span>
+                            <span class="lang-tr">Soru & Cevap</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Get help with bugs you've encountered and installation difficulties.</span>
+                            <span class="lang-tr">Karşılaştığınız hatalar ve kurulum zorlukları hakkında yardım alın.</span>
+                        </p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/AYASCELL/ayas-discussions/discussions/categories/show-and-tell" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="category-card glass-card premium-border hover-lift">
+                        <i class="fas fa-palette category-icon glow-text"></i>
+                        <h3>
+                            <span class="lang-en">Show and tell</span>
+                            <span class="lang-tr">Göster ve Anlat</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Show off your own themes, apps, or creations built on Ayas OS.</span>
+                            <span class="lang-tr">Kendi temanızı, uygulamanızı veya eserlerinizi sergileyin.</span>
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guidelines Section -->
+    <section id="guidelines" class="content-section">
+        <div class="container">
+            <h2 class="section-title gradient-text glow-text">
+                <span class="lang-en">Community Constitution</span>
+                <span class="lang-tr">Topluluk Anayasası</span>
+            </h2>
+            <p class="section-subtitle">
+                <span class="lang-en">To build a stronger environment together.</span>
+                <span class="lang-tr">Birlikte daha güçlü bir ortam yaratmak için uymamız gerekenler.</span>
+            </p>
+
+            <div class="guidelines-list">
+                <div class="guideline-item glass-card hover-lift">
+                    <i class="fas fa-search guideline-icon"></i>
+                    <div>
+                        <h3 style="margin-bottom: 5px;">
+                            <span class="lang-en">Avoid Duplicates</span>
+                            <span class="lang-tr">Tekrara Düşmeyin</span>
+                        </h3>
+                        <p style="opacity: 0.8;">
+                            <span class="lang-en">Before starting a topic, search to see if similar issues have already been discussed.</span>
+                            <span class="lang-tr">Konu açmadan önce benzer sorunların tartışılıp tartışılmadığını arama yaparak kontrol edin.</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="guideline-item glass-card hover-lift">
+                    <i class="fas fa-bug guideline-icon"></i>
+                    <div>
+                        <h3 style="margin-bottom: 5px;">
+                            <span class="lang-en">Be Developer-Friendly</span>
+                            <span class="lang-tr">Geliştirici Dostu Olun</span>
+                        </h3>
+                        <p style="opacity: 0.8;">
+                            <span class="lang-en">When reporting bugs, always share your log records and system info to speed up the resolution.</span>
+                            <span class="lang-tr">Hata bildirirken mutlaka log kayıtlarını ve sistem bilgilerinizi paylaşarak çözüm sürecini hızlandırın.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="guideline-item glass-card hover-lift">
+                    <i class="fas fa-handshake guideline-icon"></i>
+                    <div>
+                        <h3 style="margin-bottom: 5px;">
+                            <span class="lang-en">Maintain Respect</span>
+                            <span class="lang-tr">Saygıyı Koruyun</span>
+                        </h3>
+                        <p style="opacity: 0.8;">
+                            <span class="lang-en">Remember that Linux users of all levels are here. Use constructive and inclusive language.</span>
+                            <span class="lang-tr">Her seviyeden Linux kullanıcısının burada olduğunu unutmayın. Yapıcı ve kapsayıcı bir dil kullanın.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reach Us / Footer -->
+    <footer id="reach" class="main-footer glass">
+        <div class="container" style="text-align: center; padding: 60px 0 40px;">
+            <h2 class="gradient-text glow-text" style="font-size: 2.5em; margin-bottom: 20px;">
+                <span class="lang-en">Reach Us</span>
+                <span class="lang-tr">Bize Ulaşın</span>
+            </h2>
+            <p style="opacity: 0.8; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <span class="lang-en">Join the development of Ayas OS, inspect the source codes, or contact us directly using the channels below.</span>
+                <span class="lang-tr">Ayas OS gelişimine katkıda bulunmak, kaynak kodlarını incelemek veya doğrudan iletişime geçmek için aşağıdaki kanalları kullanabilirsiniz.</span>
+            </p>
+            
+            <div class="social-links big-social" style="display:flex; justify-content: center; margin-bottom: 30px; gap: 20px;">
+                <a href="https://github.com/AYASCELL/ayas-discussions/discussions" target="_blank" class="social-icon github-icon" title="Discussions Board"><i class="fas fa-comments"></i></a>
+                <a href="https://ayascell.github.io" target="_blank" class="social-icon website-icon" title="Ayas OS Website"><i class="fas fa-globe"></i></a>
+                <a href="https://github.com/AYASCELL" target="_blank" class="social-icon github-icon" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+
+            <p class="copyright-text" style="opacity: 0.5;">© 2026 Ayas OS Community</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
