@@ -111,7 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentLangText = document.getElementById('current-lang');
     
     // Check local storage for preference, default to TR
-    let currentLang = localStorage.getItem('ayascell_lang') || 'TR';
+    const defaultLang = 'TR'; // Varsayılan dil Türkçe (SEO uyumu). Ziyaretçi EN seçerse localStorage'da hatırlanır.
+    let currentLang = localStorage.getItem('ayascell_lang') || defaultLang;
     
     function applyLanguage(lang) {
         if (lang === 'EN') {
